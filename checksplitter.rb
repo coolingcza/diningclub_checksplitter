@@ -61,6 +61,7 @@ class DinnerClub
       attendees.each do |a| 
         @member_list[a][0] += event_check.per_person
         @member_list[a][1] += 1
+      end
     end
     @member_list
   end
