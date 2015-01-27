@@ -10,7 +10,7 @@ require "pry"
 #
 # Public Methods:
 # #member_list_init
-# #event
+# #event_go
 
 
 class DinnerClub
@@ -25,7 +25,7 @@ class DinnerClub
     @member_list
   end
   
-  def event_method(eventobj)
+  def event_go(eventobj)
     event_check = CheckSplitter.new(eventobj.bill, eventobj.attendees.length)
     if eventobj.treat
       puts "Who is treating the Dinner Club?"
@@ -90,5 +90,10 @@ class CheckSplitter
 end
 
 group = DinnerClub.new(["Sally","Mark","John","Claire","Jim","Sunny"])
+
+party = Event.new(["Sally","Mark","John","Claire","Jim","Sunny"], "Granite City", 120.45)
+huzzah = Event.new(["Mark","Claire","Sunny"], "Chili's", 36.8, true)
+holiday = Event.new(["Sally","Mark","John","Jim","Sunny"], "Silverthorn", 346.4)
+
 
 binding.pry
