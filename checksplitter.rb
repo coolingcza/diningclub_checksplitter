@@ -33,7 +33,7 @@ class DinnerClub
   
   def member_list_init
     @member_list = {}
-    @members.each { |m| @member_list[m] = 0 }
+    @members.each { |m| @member_list[m] = [0, 0] }
     @member_list
   end
   
@@ -56,9 +56,9 @@ class DinnerClub
     if treat
       puts "Who is treating the Dinner Club?"
       treater = gets.chomp
-      @member_list[treater] += event_check.total_bill
+      @member_list[treater][0] += event_check.total_bill
     else
-      attendees.each { |a| @member_list[a] += event_check.per_person }
+      attendees.each { |a| @member_list[a][0] += event_check.per_person }
     end
     @member_list
   end
