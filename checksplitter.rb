@@ -58,7 +58,9 @@ class DinnerClub
       treater = gets.chomp
       @member_list[treater][0] += event_check.total_bill
     else
-      attendees.each { |a| @member_list[a][0] += event_check.per_person }
+      attendees.each do |a| 
+        @member_list[a][0] += event_check.per_person
+        @member_list[a][1] += 1
     end
     @member_list
   end
