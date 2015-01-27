@@ -19,48 +19,21 @@ class DinnerClub
     @members = members
   end
   
-  # Public: #member_list_init
-  # Generates hash of member name keys set to initial value of zero.
-  #
-  # Parameters:
-  # none
-  #
-  # Returns:
-  # Populated @member_list hash.
-  #
-  # State Changes:
-  # Sets @member_list values.
-  
   def member_list_init
     @member_list = {}
-    @members.each { |m| @member_list[m] = [0, 0] }
+    @members.each { |m| @member_list[m] = 0 }
     @member_list
   end
   
-  # Public: #event
-  # Updates @member_list values of event attendees with portion of bill.
-  #
-  # Parameters:
-  # attendees - Array: Names of event attendees.
-  # bill      - Float: Bill for dinner event.
-  # treat     - Boolean: Default is false. Set to true if one diner pays entire tab.
-  #
-  # Returns:
-  # @member_list updated with event tab portions.
-  #
-  # State Changes:
-  # Updates @member_list.
-  
-  def event(attendees, bill, treat=false)
-    event_check = CheckSplitter.new(bill, attendees.length)
-    if treat
+  def event_method(eventobj)
+    event_check = CheckSplitter.new(eventobj.bill, eventobj.attendees.length)
+    if eventobj.treat
       puts "Who is treating the Dinner Club?"
       treater = gets.chomp
-      @member_list[treater][0] += event_check.total_bill
+      @member_list[treater] += event_check.total_bill
     else
-      attendees.each do |a| 
-        @member_list[a][0] += event_check.per_person
-        @member_list[a][1] += 1
+      evenobj.attendees.each do |a| 
+        @member_list[a] += event_check.per_person
       end
     end
     @member_list
@@ -68,6 +41,26 @@ class DinnerClub
   
 end
     
+
+class Event
+  attr_reader :attendees
+  attr_reader :destination
+  attr_reader :bill
+  attr_reader :treat
+  
+  def initialize(attendees, destination, bill, treat=false)
+    @attendees = attendees
+    @destination = destination
+    @bill = bill
+    @treat = treat
+  end
+  
+  def event_record
+    {destination: attendees}
+  end
+  
+end
+
 
 class CheckSplitter
   
