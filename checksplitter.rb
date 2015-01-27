@@ -32,7 +32,7 @@ class DinnerClub
       treater = gets.chomp
       @member_list[treater] += event_check.total_bill
     else
-      evenobj.attendees.each do |a| 
+      eventobj.attendees.each do |a| 
         @member_list[a] += event_check.per_person
       end
     end
