@@ -7,16 +7,25 @@ require "pry"
 # Attributes:
 # @members     - Array: contains string values for each member's name.
 # @member_list - Hash: contains running check totals for diners.
-# @log         - Array: (maybe)
 #
 # Public Methods:
-# #member_list_init
 # #event_go
 
 
 class DinnerClub
-  
   attr_reader :member_list
+  
+  # Public: #initialize
+  # Creates DinnerClub object and populates @member_list with initial values.
+  #
+  # Parameters:
+  # members - Array: contains member names.
+  #
+  # Returns:
+  # None.
+  #
+  # State Changes:
+  # Creates @member_list hash from @members.
   
   def initialize(members)
     @members = members
@@ -73,6 +82,21 @@ class Event
   attr_reader :bill
   attr_reader :treat
   attr_reader :treater
+  
+  # Public: #initialize
+  # Creates Event object and acquires @treater if @treat is true.
+  #
+  # Parameters:
+  # attendees   - Array: contains names of Dinner Club members who attend event.
+  # destination - String: name of restaurant at which event is held.
+  # bill        - Float: bill for entire party.
+  # treat       - Boolean: default false, true if one member is paying for entire party.
+  #
+  # Returns:
+  # None.
+  #
+  # State Changes:
+  # Creates and fills @treater if @treat is true.
   
   def initialize(attendees, destination, bill, treat=false)
     @attendees = attendees
