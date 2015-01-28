@@ -55,9 +55,7 @@ class DinnerClub
   def event_go(eventobj)
     event_check = CheckSplitter.new(eventobj.bill, eventobj.attendees.length)
     if eventobj.treat
-      #puts "Who is treating the Dinner Club?"  #remove
-      #treater = gets.chomp  #remove
-      @member_list[eventobj.treater][0] += event_check.total_bill  # treater --> eventobj.treater
+      @member_list[eventobj.treater][0] += event_check.total_bill
     else
       eventobj.attendees.each do |a| 
         @member_list[a][0] += event_check.per_person
@@ -79,6 +77,7 @@ end
 # @destination  - String: restaurant name where event is hosted.
 # @bill         - Float: Bill for event for entire group.
 # @treat        - Boolean: True if one member of the dinner club pays entire bill.
+# @treater      - String: acquired if @treat, name of member who pays entire bill.
 #
 # Public Methods:
 # none
@@ -88,22 +87,18 @@ class Event
   attr_reader :destination
   attr_reader :bill
   attr_reader :treat
-  #attr_reader :treater
+  attr_reader :treater
   
   def initialize(attendees, destination, bill, treat=false)
     @attendees = attendees
     @destination = destination
     @bill = bill
     @treat = treat
-  end
-  
-  # Method documentation
-  
-  def get_treater
     if @treat
       puts "Who is treating?"
       @treater = gets.chomp
     end
+  end
 
 end
 
@@ -171,7 +166,7 @@ end
 group = DinnerClub.new(["Sally","Mark","John","Claire","Jim","Sunny"])
 
 party = Event.new(["Sally","Mark","John","Claire","Jim","Sunny"], "Granite City", 120.45)
-huzzah = Event.new(["Mark","Claire","Sunny"], "Chili's", 36.8, true)
+lunch = Event.new(["Mark","Claire","Sunny"], "Chili's", 36.8, true)
 holiday = Event.new(["Sally","Mark","John","Jim","Sunny"], "Silverthorn", 346.4)
 
 
