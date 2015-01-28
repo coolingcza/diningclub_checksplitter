@@ -319,11 +319,11 @@ class CheckSplitter
   
 end
 
-group = DinnerClub.new("Sally","Mark","John","Claire","Jim","Sunny")
+#group = DinnerClub.new("Sally","Mark","John","Claire","Jim","Sunny")
 
-party = Event.new(["Sally","Mark","John","Claire","Jim","Sunny"], "Granite City", 120.45)
-lunch = Event.new(["Mark","Claire","Sunny","Bob"], "Chili's", 36.8, true)
-holiday = Event.new(["Sally","Mark","John","Jim","Sunny"], "Silverthorn", 346.4)
+#party = Event.new(["Sally","Mark","John","Claire","Jim","Sunny"], "Granite City", 120.45)
+#lunch = Event.new(["Mark","Claire","Sunny","Bob"], "Chili's", 36.8, true)
+#holiday = Event.new(["Sally","Mark","John","Jim","Sunny"], "Silverthorn", 346.4)
 
 
-binding.pry
+#binding.pry
