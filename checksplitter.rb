@@ -17,6 +17,7 @@ class DinnerClub
   
   def initialize(members)
     @members = members
+    @log = []
   end
   
   # Public: #member_list_init
@@ -60,6 +61,7 @@ class DinnerClub
         @member_list[a] += event_check.per_person
       end
     end
+    @log << eventobj
     @member_list
   end
   
