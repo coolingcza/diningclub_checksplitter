@@ -55,9 +55,9 @@ class DinnerClub
   def event_go(eventobj)
     event_check = CheckSplitter.new(eventobj.bill, eventobj.attendees.length)
     if eventobj.treat
-      puts "Who is treating the Dinner Club?"
-      treater = gets.chomp
-      @member_list[treater][0] += event_check.total_bill
+      #puts "Who is treating the Dinner Club?"  #remove
+      #treater = gets.chomp  #remove
+      @member_list[eventobj.treater][0] += event_check.total_bill  # treater --> eventobj.treater
     else
       eventobj.attendees.each do |a| 
         @member_list[a][0] += event_check.per_person
@@ -88,6 +88,7 @@ class Event
   attr_reader :destination
   attr_reader :bill
   attr_reader :treat
+  #attr_reader :treater
   
   def initialize(attendees, destination, bill, treat=false)
     @attendees = attendees
@@ -96,7 +97,14 @@ class Event
     @treat = treat
   end
   
+  # Method documentation
   
+  def get_treater
+    if @treat
+      puts "Who is treating?"
+      @treater = gets.chomp
+    end
+
 end
 
 # Class: CheckSplitter
