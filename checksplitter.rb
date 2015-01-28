@@ -48,15 +48,29 @@ class DinnerClub
   
   def event_go(eventobj)
     event_check = CheckSplitter.new(eventobj.bill, eventobj.attendees.length)
-    if eventobj.treat
-      @member_list[eventobj.treater][0] += event_check.total_bill
-    else
-      eventobj.attendees.each do |a| 
-        @member_list[a][0] += event_check.per_person
-      end
-    end
-    eventobj.attendees.each { |a| @member_list[a][1] << eventobj.destination }
+    #if eventobj.treat
+    #  @member_list[eventobj.treater][0] += event_check.total_bill
+    #else
+    #  eventobj.attendees.each do |a| 
+    #    @member_list[a][0] += event_check.per_person
+    #  end
+    #end
+    upd_running_totals(eventobj,event_check)
+    #eventobj.attendees.each { |a| @member_list[a][1] << eventobj.destination }
+    upd_member_destinations(eventobj)
     @member_list
+  end
+  
+  def upd_running_totals(eventobj_name, event_check)
+    if eventobj_name.treat
+      @member_list[eventobj_name.treater][0] += event_check.total_bill
+    else
+      eventobj_name.attendees.each { |a| @member_list[a][0] += event_check.per_person }
+    end
+  end
+  
+  def upd_member_destinations(eventobj)
+    eventobj.attendees.each { |a| @member_list[a][1] << eventobj.destination }
   end
   
 end
@@ -150,7 +164,7 @@ class CheckSplitter
   # None.
   
   def total_bill
-    @bill + (@bill * @tip)
+    ()@bill * (1 + @tip)).ceil.to_i
   end
   
   # Public: #per_person
@@ -167,7 +181,7 @@ class CheckSplitter
   # None.
   
   def per_person
-    total_bill / @party_size
+    (total_bill / @party_size).ceil.to_i
   end
   
 end
