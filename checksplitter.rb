@@ -16,6 +16,8 @@ require "pry"
 
 class DinnerClub
   
+  attr_reader :member_list
+  
   def initialize(members)
     @members = members
     @member_list = {}
