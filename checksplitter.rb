@@ -24,25 +24,6 @@ class DinnerClub
     @members.each { |m| @member_list[m] = [0,[]] }
   end
   
-  # Public: #member_list_init
-  # Generates the member list hash with initial values of zero and empty
-  # destination arrays.
-  #
-  # Parameters:
-  # none
-  #
-  # Returns:
-  # @member_list: Hash
-  #
-  # State Changes:
-  # Populates @member_list
-  
-  def member_list_init
-    #@member_list = {}
-    #@members.each { |m| @member_list[m] = [0,[]] }
-    @member_list
-  end
-  
   # Public: #event_go
   # Updates @member_list with member tabs for given event, adds destination to 
   # attendees' records.
