@@ -18,6 +18,8 @@ class DinnerClub
   
   def initialize(members)
     @members = members
+    @member_list = {}
+    @members.each { |m| @member_list[m] = [0,[]] }
   end
   
   # Public: #member_list_init
@@ -34,8 +36,8 @@ class DinnerClub
   # Populates @member_list
   
   def member_list_init
-    @member_list = {}
-    @members.each { |m| @member_list[m] = [0,[]] }
+    #@member_list = {}
+    #@members.each { |m| @member_list[m] = [0,[]] }
     @member_list
   end
   
