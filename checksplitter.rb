@@ -62,7 +62,7 @@ class DinnerClub
         @member_list[a][0] += event_check.per_person
       end
     end
-    evenobj.attendees.each { |a| @member_list[a][1] << evenobj.destination }
+    evenobj.attendees.each { |a| @member_list[a][1] << eventobj.destination }
     #@log << eventobj
     @member_list
   end
